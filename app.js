@@ -10,7 +10,7 @@ const app = express()
 
 
 mongoose.connect(MONGODB_URI).then(() => {
-    logger.info("Connected Successfully")
+  logger.info('Connected Successfully')
 }).catch((error) => logger.error(error.message))
 
 app.use(express.json())
