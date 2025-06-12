@@ -1,6 +1,7 @@
 const { test, describe } = require('node:test')
 const assert = require('node:assert')
-const mostBlogs = require('../utils/list_helper').mostBlogs
+const mostLikes = require('../utils/list_helper').mostLikes
+
 
 const listWithOneBlog = [
   {
@@ -81,26 +82,23 @@ const listWithFiveBlogs = [
   }
 ];
 
-describe('most blog', () => {
 
-  test('single blog', () => {
-    const result = mostBlogs(listWithOneBlog)
-    assert.deepStrictEqual(result, {
-      author: 'Edsger W. Dijkstra',
-      blogs: 1
-    })
+describe('most likes with author', () => {
+
+  test('most likes', () => {
+
+    const result = mostLikes(listWithOneBlog)
+    const expected = { author: 'Edsger W. Dijkstra', likes: 5 }
+    assert.deepStrictEqual(result, expected)
+
   })
 
-
-
-
-  test('most with five blogs', () => {
-    const result = mostBlogs(listWithFiveBlogs)
-    const expected = {
-      author: "Robert C. Martin",
-      blogs: 3
-    }
-
+  test('list with five blogs', () => {
+    const result = mostLikes(listWithFiveBlogs)
+    const expected = { author: 'Andrew Hunt, David Thomas', likes: 15 }
     assert.deepStrictEqual(result, expected)
   })
+
+
 })
+
