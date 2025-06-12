@@ -28,4 +28,28 @@ const favoriteBlog = (blogs) => {
   return blogs.reduce((favorite, current) => (favorite.likes > current.likes) ? favorite : current)
 }
 
-module.exports = { dummy, totalLikes, favoriteBlog }
+const mostBlogs = (blogs) => {
+  if (blogs.length === 0) return null;
+
+  const counts = blogs.reduce((acc, blog) => {
+    acc[blog.author] = (acc[blog.author] || 0) + 1;
+    return acc;
+  }, {});
+
+  let maxAuthor = null;
+  let maxBlogs = 0;
+
+  for (const author in counts) {
+    if (counts[author] > maxBlogs) {
+      maxAuthor = author;
+      maxBlogs = counts[author];
+    }
+  }
+
+  return { author: maxAuthor, blogs: maxBlogs };
+};
+
+
+
+
+module.exports = { dummy, totalLikes, favoriteBlog, mostBlogs }
