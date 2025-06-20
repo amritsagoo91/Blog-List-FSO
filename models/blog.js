@@ -8,4 +8,4 @@ const blogSchema = mongoose.Schema({
   likes: Number,
 })
 
-module.exports = new mongoose.model('Blog', blogSchema, 'blogs')
+module.exports = new mongoose.model('Blog', blogSchema)

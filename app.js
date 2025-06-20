@@ -1,3 +1,4 @@
+require('express-async-error')
 const express = require('express')
 const mongoose = require('mongoose')
 const blogRouter = require('./controller/blog')
