@@ -58,7 +58,21 @@ test.only('if the likes property missing', async () => {
         .expect(201)
         .expect('Content-Type', /application\/json/)
 
-     assert.strictEqual(response.body.likes, 0)
+    assert.strictEqual(response.body.likes, 0)
+
+})
+
+test.only('blog without title & URL', async () => {
+    const newBlog = {
+        author: 'testAuthor'
+    }
+
+    const response = await api.post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+
+    assert.strictEqual(response.body.title, undefined)
+    assert.strictEqual(response.body.url, undefined)
 
 })
 
